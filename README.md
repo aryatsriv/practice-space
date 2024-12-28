@@ -7,7 +7,7 @@ This repository contains solutions to various leetcode/codeforces problems.
 To get started with the solutions:
 1. Clone the repository:
     ```bash
-    git clone https://www.github.com/aryatsriv/Leetcode.gi
+    git clone https://www.github.com/aryatsriv/Leetcode.git
     ```
 2. Navigate to the problem you are interested in.
 3. Open the solution file to view the implementation.
