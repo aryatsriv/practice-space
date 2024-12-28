@@ -42,4 +42,5 @@ def maxSubArray(self, nums: List[int]) -> int:
             curr=max(num,curr+num)
             maxSum=max(curr,maxSum)
 
+
         return maxSum
