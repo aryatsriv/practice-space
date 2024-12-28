@@ -21,6 +21,7 @@
 # 0 <= arr[i] <= 106
 
 
+#Find Leaders in an array
 class Solution:
     def leaders(self, arr):
         n=len(arr)
