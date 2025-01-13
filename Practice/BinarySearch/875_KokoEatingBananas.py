@@ -41,9 +41,7 @@ class Solution:
             mid=(l+r)//2
             count=0
             for pile in piles:
-                count+=(pile//mid)
-                if pile%mid!=0:
-                    count+=1
+                count+=math.ceil(pile/mid)
 
             if count<=h:
                  minVal=min(mid,minVal)
@@ -54,4 +52,5 @@ class Solution:
 
         
         return minVal
+
 
