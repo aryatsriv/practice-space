@@ -14,7 +14,7 @@ To get started with the solutions:
 
 ## Contributing
 
-Contributions are welcome! If you have a better solution or a solution in a different language, feel free to open a pull request.
+Contributions are welcome! If you have a better solution or any other input that you think could be helpful, feel free to open a pull request or reach out to me directly.
 
 ## License
 
