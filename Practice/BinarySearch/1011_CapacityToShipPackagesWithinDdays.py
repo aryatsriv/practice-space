@@ -50,6 +50,22 @@
 
 
 class Solution:
+    #calculate Days Required Optimal
+    def calculateDaysRequiredOptimal(self,weights,shipCapacity):
+        if len(weights)==0:
+            return 0
+        daysRequired=1
+        load=0
+        for weight in weights:
+            if weight+load>shipCapacity:
+                daysRequired+=1
+                load=weight
+            else:
+                load+=weight
+
+        return daysRequired
+
+
     # calculate Days Required 
     def calculateDaysRequired(self,weights,shipCapacity):
         if len(weights)==0:
@@ -71,20 +87,6 @@ class Solution:
         return daysRequired
 
 
-    def shipWithinDays(self, weights: List[int], days: int) -> int:
-        s=max(weights)
-        e=sum(weights)
-        while s<=e:
-            mid=(s+e)//2
-            val=self.calculateDaysRequired(weights,mid)
-            if val>days:
-                s=mid+1
-            else:
-                minVal=mid
-                e=mid-1
-
-
-        return minVal
             
     #calculate Days Required with boolean logic
     
