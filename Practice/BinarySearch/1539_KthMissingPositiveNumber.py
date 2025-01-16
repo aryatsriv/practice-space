@@ -33,3 +33,22 @@
 #Follow up:
 #
 #Could you solve this problem in less than O(n) complexity?
+class Solution:
+    def findKthPositive(self, arr: List[int], k: int) -> int:
+        s=0
+        e=len(arr)-1
+
+        while s<=e:
+            mid=(s+e)//2
+            missing=arr[mid]-mid-1
+            if missing<k:
+                s=mid+1
+            else:
+                e=mid-1
+
+        #gets calculated by end+k-(amount of element present till end)
+        #end could be -1 as well as the loop will not end until end and start crosses each other, i.e end would be smaller than start
+        return e+1+k
+
+
+            
