@@ -17,7 +17,5 @@ To get started with the solutions:
 Contributions are welcome! If you have a better solution or any other input that you think could be helpful, feel free to open a pull request or reach out to me directly.
 
 ## License
-
 This project is licensed under the MIT License.
- Leetcode
 
