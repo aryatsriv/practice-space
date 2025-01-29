@@ -29,3 +29,32 @@
 #0 <= n <= 1000
 #1 <= m + n <= 2000
 #-106 <= nums1[i], nums2[i] <= 106
+class Solution:
+    def findMedianSortedArrays(self, nums1: List[int], nums2: List[int]) -> float:
+        if len(nums2)>len(nums1):
+            return self.findMedianSortedArrays(nums2,nums1)
+
+        m,n=len(nums1),len(nums2)
+        midLen=(m+n)//2
+        s=0
+        e=n-1
+
+        while True:
+            i=(s+e)//2
+            j=midLen-i-2
+            l2Max=-sys.maxsize-1 if i<0 else nums2[i]
+            l1Max=-sys.maxsize-1 if j<0 else nums1[j]
+            r2Min=sys.maxsize if i+1>=n else nums2[i+1]
+            r1Min=sys.maxsize if j+1>=m else nums1[j+1]
+            
+            if l2Max<=r1Min and l1Max<=r2Min:
+                if (m+n)%2==0:
+                    return (min(r1Min,r2Min)+max(l1Max,l2Max))/2
+                else:
+                    return min(r1Min,r2Min)
+            elif l2Max>r1Min:
+                e=i-1
+            else:
+                s=i+1
+
+        return -1
