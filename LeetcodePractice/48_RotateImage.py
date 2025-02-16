@@ -27,3 +27,22 @@
 #1 <= n <= 20
 #-1000 <= matrix[i][j] <= 1000
 
+class Solution:
+    def rotate(self, matrix: List[List[int]]) -> None:
+        i=0
+        j=len(matrix)-1
+        n=j+1
+        while i<j:
+            k=0
+            while k<n:
+                matrix[i][k],matrix[j][k]=matrix[j][k],matrix[i][k]
+                k+=1
+            i+=1
+            j-=1
+        i=0
+        while i<n:
+            for j in range(0,i):
+                 matrix[i][j],matrix[j][i]=matrix[j][i],matrix[i][j]
+            i+=1
+        
+
