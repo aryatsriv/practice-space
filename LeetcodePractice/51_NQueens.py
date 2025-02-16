@@ -26,4 +26,39 @@
 #Constraints:
 #
 #1 <= n <= 9
+class Solution:
+    def isValid(self,l,r,c,n):
+        for i in range(0,r):
+            if l[i][c]=='Q':
+                return False
+        for i in range(0,c):
+            if l[r][i]=='Q':
+                return False
+        for i in range(r-1,-1,-1):
+            j=c-(r-i)
+            if j>=0 and l[i][j]=='Q':
+                return False 
+            j=c+(r-i)
+            if j<n and l[i][j]=='Q':
+                return False
+        return True
 
+    def solveNQueens(self, n: int) -> List[List[str]]:
+        curr=[['.' for _ in range(n)] for _ in range(n)]
+        res=[]
+        def rec(i):
+            if i>=n:
+                joinedCurr=["".join(ele) for ele in curr]
+                res.append(joinedCurr)
+
+            for j in range(0,n):
+                if self.isValid(curr,i,j,n):
+                    curr[i][j]='Q'
+                    rec(i+1)
+                    curr[i][j]='.'
+
+            return
+
+        rec(0)
+
+        return res
