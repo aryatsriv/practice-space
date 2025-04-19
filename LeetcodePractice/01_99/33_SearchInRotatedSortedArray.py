@@ -36,23 +36,25 @@
 #-104 <= target <= 104
 
 class Solution:
-    def search(self, nums: List[int], target: int) -> int:
+    def search(self, nums: List[int], target: int) -> bool:
         s=0
         e=len(nums)-1
-
+        
         while s<=e:
             mid=(s+e)//2
             if nums[mid]==target:
-                return mid
-            elif nums[mid]>target:
-                if nums[mid]>=nums[s] and nums[s]>target:
-                    s=mid+1
-             Q   else:
-                    e=mid-1
-            else:
-                if nums[mid]<=nums[e] and target>nums[e]:
+                return True
+            if nums[mid]>nums[s]:
+                if target<nums[mid] and target>=nums[s]:
                     e=mid-1
                 else:
                     s=mid+1
-        
-        return -1
+            elif nums[mid]<nums[s]:
+                if target>nums[mid] and target<=nums[e]:
+                    s=mid+1
+                else:
+                    e=mid-1
+            else:
+                s=s+1
+
+        return False

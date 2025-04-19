@@ -36,5 +36,42 @@
 #1 <= m, n <= 105
 #s and t consist of uppercase and lowercase English letters.
 
+class Solution:
+    def minWindow(self, s: str, t: str) -> str:
+        cacheT=Counter(t)
+        m=len(s)
+        n=len(t)
+        left=0
+        right=m+1
+        i=0
+        j=0
+        cacheS=defaultdict(int)
 
+        while j<m:
+            cacheS[s[j]]+=1
+            if s[j] in cacheT and cacheS[s[j]]==cacheT[s[j]]:
+                allKeysPresent=True
+                for key,value in cacheT.items():
+                    if key not in cacheS or (key in cacheS and cacheS[key]<cacheT[key]):
+                            allKeysPresent=False
+
+                
+                while allKeysPresent:
+                    if (j-i)<right-left:
+                        right=j
+                        left=i
+                    cacheS[s[i]]-=1
+                    if cacheS[s[i]]==0:
+                        del cacheS[s[i]]
+                    i+=1
+                    for key,value in cacheT.items():
+                        if key not in cacheS or (key in cacheS and cacheS[key]<cacheT[key]):
+                            allKeysPresent=False
+            j+=1
+
+        if right>len(s):
+            return ""
+        return s[left:right+1]
+        
+        
 
