@@ -26,3 +26,23 @@
 #1 <= heights.length <= 105
 #0 <= heights[i] <= 104
 
+class Solution:
+    def largestRectangleArea(self, heights: List[int]) -> int:
+        st=[]
+        i=0
+        maxArea=0
+        while i<len(heights):
+            height=heights[i]
+            start=i
+            while st and st[-1][1]>height:
+                maxArea=max(st[-1][1]*(i-st[-1][0]),maxArea)
+                start=st[-1][0]
+                st.pop()
+            st.append([start,height])
+            i+=1
+        
+        while st:
+            maxArea=max(st[-1][1]*(len(heights)-st[-1][0]),maxArea)
+            st.pop()
+
+        return maxArea
