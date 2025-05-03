@@ -1,0 +1,32 @@
+//Common Table Expression
+A CTE (Common Table Expression) in SQL Server is a temporary result set that you can reference within a SELECT, INSERT, UPDATE, or DELETE statement. It's defined using the WITH keyword and helps make queries more readable and maintainable—especially when working with complex logic like recursive queries, ranking, or subqueries.
+
+-- CTE
+CREATE FUNCTION getNthHighestSalary(@N INT)
+RETURNS INT
+AS
+BEGIN
+    DECLARE @Result INT;
+
+    WITH RANKED_SALARY AS (
+        SELECT SALARY, DENSE_RANK() OVER (ORDER BY SALARY DESC) AS salaryrank
+        FROM Employee
+    )
+    SELECT @Result = SALARY
+    FROM RANKED_SALARY
+    WHERE salaryrank = @N;
+
+    RETURN @Result;
+END
+
+
+//OFFSET LIMIT
+In SQL Server, you can use OFFSET and FETCH clauses to paginate results — i.e., skip a certain number of rows and then fetch a limited number of rows.
+These clauses are typically used with ORDER BY, which is mandatory when using OFFSET.
+
+
+SELECT column1, column2, ...
+FROM your_table
+ORDER BY some_column
+OFFSET @Offset ROWS
+FETCH NEXT @Limit ROWS ONLY;
