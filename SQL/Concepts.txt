@@ -30,3 +30,12 @@ FROM your_table
 ORDER BY some_column
 OFFSET @Offset ROWS
 FETCH NEXT @Limit ROWS ONLY;
+
+
+//Window function
+In SQL Server, window functions perform calculations across a set of table rows that are somehow related to the current row. Unlike aggregate functions, window functions do not group the result set; instead, each row retains its individuality, and a value is calculated using a "window" of rows.
+SELECT 
+    Name,
+    Department,
+    ROW_NUMBER() OVER (PARTITION BY Department ORDER BY Name) AS RowNum
+FROM Employees;
