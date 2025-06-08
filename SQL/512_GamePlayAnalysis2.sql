@@ -50,7 +50,6 @@
 #+-----------+-----------+
 
 
-/* Write your T-SQL query statement below */
 with playerlogindate as (
     select player_id,device_id,rank() over (partition by player_id order by event_date) as 'row_num' from Activity
 )
