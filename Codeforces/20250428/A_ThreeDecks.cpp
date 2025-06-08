@@ -2,7 +2,6 @@
 
 using namespace std;
 
-
 bool CanMoveToBeEqual(int a, int b, int c){
     int x=(a+b+c);
     if (x%3!=0 || c<a || c<b){
@@ -14,6 +13,8 @@ bool CanMoveToBeEqual(int a, int b, int c){
     }
     return true;
     }
+
+    
 
 int main(){
     int t;
