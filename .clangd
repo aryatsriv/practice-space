@@ -1,0 +1,30 @@
+# This is a configuration file for clangd.
+# Place this file in the root directory of your project with the name .clangd
+
+# This tells clangd how to compile your files.
+CompileFlags:
+  # Add compiler flags here. Each flag should be on a new line.
+  Add:
+    # --- REQUIRED ---
+    # Specify the C++ standard to use. Modern C++ is recommended.
+    - -std=c++17
+
+    # --- REQUIRED: EDIT THESE PATHS ---
+    # Add the include paths you found in Step 1.
+    # You must replace the example paths below with the actual paths from your system.
+    # Use the '-I' prefix for each path.
+
+
+    - -I/usr/include/c++/13
+    - -I/usr/include/x86_64-linux-gnu/c++/13
+    - -I/usr/include/c++/13/backward
+    - -I/usr/lib/gcc/x86_64-linux-gnu/13/include
+    - -I/usr/local/include
+    - -I/usr/include/x86_64-linux-gnu
+    - -I/usr/include
+
+
+    # --- OPTIONAL ---
+    # Add any other flags you might use during compilation, for example:
+    # - -Wall
+    # - -Wextra
