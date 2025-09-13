@@ -24,4 +24,28 @@
 // Output:
 // NO SOLUTION
 
+#include<bits/stdc++.h>
 
+#define ll long long 
+using namespace std;
+
+int main(){
+	ll inp=0;
+	cin>>inp;
+	if(inp==3 || inp==2){
+		cout<<"NO SOLUTION";
+		return 0;
+	}
+	ll val=inp-1;
+	while(val>0){
+		cout<<val<<" ";
+		val-=2;
+	}
+	val=inp;
+	while(val>0){
+		cout<<val<<" ";
+		val-=2;
+	}
+	return 0;
+	
+}
