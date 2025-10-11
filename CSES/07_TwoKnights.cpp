@@ -1,0 +1,46 @@
+// Your task is to count for k=1,2,\ldots,n the number of ways two knights can be placed on a k \times k chessboard so that they do not attack each other.
+// Input
+// The only input line contains an integer n.
+// Output
+// Print n integers: the results.
+// Constraints
+//
+// 1 \le n \le 10000
+//
+// Example
+// Input:
+// 8
+//
+// Output:
+// 0
+// 6
+// 28
+// 96
+// 252
+// 550
+// 1056
+// 1848
+
+
+#include<iostream>
+
+#define ll long long
+
+using namespace std;
+
+ll getCount(ll n){
+	ll totalCountForAttack= (n-2)*(n-1)*2*2;
+	ll totalBox=n*n;
+	ll totalCount=totalBox*(totalBox-1)/2;
+	return totalCount-totalCountForAttack;
+}
+int main(){
+	int n;
+	cin>>n;
+	int i=1;
+	while (i<=n){
+		cout<<getCount(i)<<endl;
+		i++;
+	}
+	return 0;
+}
