@@ -43,13 +43,11 @@ int main(){
 		if(cache[i]%2==0){
 			for(int j=0;j<cache[i];j+=2){
 				res1.push_back('A'+i);
-				res2.push_back('A'+i);
 			}
 		}
 		else if(cache[i]%2==1 && isOddFound==false){
 			for(int j=1;j<cache[i];j+=2){
 				res1.push_back('A'+i);
-				res2.push_back('A'+i);
 			}
 			isOddFound=true;
 			mid='A'+i;
@@ -60,11 +58,11 @@ int main(){
 		}
 	}
 
-	reverse(res2.begin(),res2.end());
 	cout<<string(res1.begin(),res1.end());
 	if(isOddFound){
 		cout<<mid;
 	}
-	cout<<string(res2.begin(),res2.end());
+	reverse(res1.begin(),res1.end());
+	cout<<string(res1.begin(),res1.end());
 	return 0;
 }
