@@ -1,0 +1,80 @@
+// Grid Coloring I
+// You are given an n\times m grid where each cell contains one character A, B,
+// C or D. For each cell, you must change the character to A, B, C or D. The new
+// character must be different from the old one. Your task is to change the
+// characters in every cell such that no two adjacent cells have the same
+// character. Input The first line has two integers n and m: the number of rows
+// and columns. The next n lines each have m characters: the description of the
+// grid. Output Print n lines each with m characters: the description of the
+// final grid. You may print any valid solution. If no solution exists, just
+// print IMPOSSIBLE. Constraints
+//
+// Example
+// Input:
+// 3 4
+// AAAA
+// BBBB
+// CCDD
+//
+// Output:
+// CDCD
+// DCDC
+// ABAB
+
+#include <bits/stdc++.h>
+
+using namespace std;
+
+void solve(vector<vector<char>> &curr, int m, int n) {
+  for (int i = 0; i < m; i++) {
+    for (int j = 0; j < n; j++) {
+      set<char> cache;
+      if (i != 0) {
+        cache.insert(curr[i - 1][j]);
+      }
+      if (j != 0) {
+        cache.insert(curr[i][j - 1]);
+      }
+      cache.insert(curr[i][j]);
+      for (char x = 'A'; x <= 'D'; x++) {
+        if (!cache.count(x)) {
+          curr[i][j] = x;
+          break;
+        }
+      }
+    }
+  }
+}
+
+void solve2(vector<vector<char>> &curr, int m, int n) {
+  for (int row = 0; row < m; row++) {
+    for (int col = 0; col < n; col++) {
+      if (((row + col) % 2) == 0) {
+        curr[row][col] = (curr[row][col] == 'A' ? 'C' : 'A');
+      } else {
+        curr[row][col] = (curr[row][col] == 'B' ? 'D' : 'B');
+      }
+    }
+  }
+}
+
+int main() {
+  int n, m;
+  cin >> m >> n;
+  vector<vector<char>> curr(m, vector<char>(n, ' '));
+  for (int i = 0; i < m; i++) {
+    string a = "";
+    cin >> a;
+    curr[i].assign(a.begin(), a.end());
+  }
+
+  solve2(curr, m, n);
+  for (int i = 0; i < m; i++) {
+    for (int j = 0; j < n; j++) {
+      cout << curr[i][j];
+    }
+    cout << endl;
+  }
+
+  return 0;
+}
