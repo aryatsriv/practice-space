@@ -34,6 +34,23 @@
 
 
 class Solution:
+    #O(n) sliding window - Most optimized
+    def lengthOfLongestSubstringOpt(self, s: str) -> int:
+        cache={}
+        j=0
+        n=len(s)
+        i=0
+        maxCount=0
+        while j<n: 
+            if s[j] in cache and cache[s[j]]>=i:
+                i=cache[s[j]]+1
+
+            maxCount=max(maxCount,j-i+1)
+            print(i,j)
+            cache[s[j]]=j
+            j+=1
+
+
     def lengthOfLongestSubstring(self, s: str) -> int:
         cache=set()
         i=0
@@ -50,21 +67,7 @@ class Solution:
 
         return maxCount
 
-    #O(n) sliding window
-    def lengthOfLongestSubstringOpt(self, s: str) -> int:
-        cache={}
-        j=0
-        n=len(s)
-        i=0
-        maxCount=0
-        while j<n: 
-            if s[j] in cache and cache[s[j]]>=i:
-                i=cache[s[j]]+1
 
-            maxCount=max(maxCount,j-i+1)
-            print(i,j)
-            cache[s[j]]=j
-            j+=1
 
 
 
