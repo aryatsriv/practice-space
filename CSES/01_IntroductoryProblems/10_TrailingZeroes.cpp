@@ -15,4 +15,23 @@
 // 20
 
 // Output:
-// 4
+//
+
+#include <iostream>
+
+#define ll long long
+using namespace std;
+
+int main() {
+  ll n;
+  cin >> n;
+  ll trailingZeroes = 0;
+
+  for (ll m = 5; m <= n; m *= 5) {
+    trailingZeroes += n / m;
+  }
+
+  cout << trailingZeroes;
+
+  return 0;
+}
